@@ -1,1 +1,9 @@
 # יומן פרומפטים
+                                
+## 2026-11-17
+
+**18:13 · codex**
+
+> Elanoria setup check: verify that Codex CLI automatically logs this prompt. Reply OK without running commands or editing files.
+
+בדקתי ב־VS Code שהודעת הניסיון של Codex CLI נרשמה אוטומטית ב־PROMPTS.md.
