@@ -6,7 +6,7 @@
    Done when the catalog displays typed entries using stable keys and filters by name.
 2. [x] Add React Router, navigation, and entry detail.
    Done when a catalog item opens its own URL and `useParams` resolves the selected entry.
-3. [ ] Connect the public D&D bestiary.
+3. [x] Connect the public D&D bestiary.
    Done when list and detail use `fetch` inside `useEffect` and show loading, error, and data states.
 4. [ ] Add Vitest and its browser UI.
    Done when at least five meaningful logic tests pass with `npm test` and appear with `npm run test:ui`.

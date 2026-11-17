@@ -1,9 +1,19 @@
 import { Link, useParams } from 'react-router'
+import { MONSTER_ENTRY_PREFIX } from '../bestiary/srd'
 import { worldEntries } from '../catalog/worldEntries'
+import MonsterDetailPage from './MonsterDetailPage'
 import NotFoundPage from './NotFoundPage'
 
 export default function EntryDetailPage() {
   const { id } = useParams<'id'>()
+
+  if (id?.startsWith(MONSTER_ENTRY_PREFIX)) {
+    const index = id.slice(MONSTER_ENTRY_PREFIX.length)
+    if (/^[a-z0-9-]+$/.test(index)) {
+      return <MonsterDetailPage index={index} />
+    }
+  }
+
   const entry = worldEntries.find((item) => item.id === id)
 
   if (!entry) {

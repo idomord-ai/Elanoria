@@ -5,7 +5,7 @@ import EntryDetailPage from './pages/EntryDetailPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 export default function App() {
-  const [query, setQuery] = useState('')
+  const [queries, setQueries] = useState({ elanor: '', bestiary: '' })
 
   return (
     <>
@@ -21,7 +21,15 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/compendium" replace />} />
           <Route path="/compendium">
-            <Route index element={<CompendiumPage query={query} onQueryChange={setQuery} />} />
+            <Route
+              index
+              element={
+                <CompendiumPage
+                  queries={queries}
+                  onQueryChange={(source, query) => setQueries((previous) => ({ ...previous, [source]: query }))}
+                />
+              }
+            />
             <Route path=":id" element={<EntryDetailPage />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />

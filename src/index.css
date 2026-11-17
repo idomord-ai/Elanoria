@@ -37,16 +37,19 @@ body {
 }
 
 .site-nav a,
+.catalog-sources a,
 .back-link {
   color: var(--accent);
   text-underline-offset: 0.2em;
 }
 
-.site-nav a[aria-current="page"] {
+.site-nav a[aria-current="page"],
+.catalog-sources a[aria-current="page"] {
   text-decoration-thickness: 0.15em;
 }
 
-a:focus-visible {
+a:focus-visible,
+button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
@@ -65,6 +68,13 @@ h1 {
   margin: 0 0 1.75rem;
   font-size: clamp(2.25rem, 5vw, 3.6rem);
   line-height: 1.1;
+}
+
+.catalog-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .search {
@@ -145,4 +155,50 @@ h1 {
 
 .entry-summary {
   margin: 0;
+}
+
+.monster-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  gap: 0.75rem;
+  margin-block: 1.5rem;
+}
+
+.monster-stats > div {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  background: #1c2733;
+}
+
+.monster-stats dt {
+  color: var(--muted);
+}
+
+.monster-stats dd {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.monster-abilities ul {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.monster-abilities li p {
+  margin: 0.25rem 0 0;
+  white-space: pre-line;
+}
+
+.api-error button {
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  background: #202c3a;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
 }

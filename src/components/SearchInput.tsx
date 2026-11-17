@@ -3,9 +3,10 @@ import { useId } from 'react'
 interface SearchInputProps {
   value: string
   onChange: (value: string) => void
+  placeholder?: string
 }
 
-export default function SearchInput({ value, onChange }: SearchInputProps) {
+export default function SearchInput({ value, onChange, placeholder = 'e.g. Valciel' }: SearchInputProps) {
   const id = useId()
 
   return (
@@ -16,7 +17,7 @@ export default function SearchInput({ value, onChange }: SearchInputProps) {
         type="search"
         value={value}
         onChange={(event) => onChange(event.currentTarget.value)}
-        placeholder="e.g. Valciel"
+        placeholder={placeholder}
       />
     </div>
   )
