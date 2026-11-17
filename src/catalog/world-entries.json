@@ -1,0 +1,44 @@
+[
+  {
+    "id": "elanor",
+    "title": "Elanor",
+    "kind": "World",
+    "summary": "The world of the Seven Kingdoms."
+  },
+  {
+    "id": "valmyre",
+    "title": "Valmyre",
+    "kind": "Kingdom",
+    "summary": "The Lunar Empire and home of the Crescent City."
+  },
+  {
+    "id": "aldoran",
+    "title": "Aldoran",
+    "kind": "Kingdom",
+    "summary": "The Sun Kingdom of Elanor."
+  },
+  {
+    "id": "thurenderin",
+    "title": "Thuren’derin",
+    "kind": "Kingdom",
+    "summary": "One of the Seven Kingdoms of Elanor."
+  },
+  {
+    "id": "valciel",
+    "title": "Valciel",
+    "kind": "Region",
+    "summary": "A southern region of Valmyre."
+  },
+  {
+    "id": "valsburg",
+    "title": "Valsburg",
+    "kind": "City",
+    "summary": "The capital of Valmyre, known as the Crescent City."
+  },
+  {
+    "id": "mines-of-valciel",
+    "title": "Mines of Valciel",
+    "kind": "Location",
+    "summary": "An underground expedition site in Valciel."
+  }
+]

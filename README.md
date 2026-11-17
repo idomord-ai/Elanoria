@@ -3,7 +3,7 @@
 A campaign compendium for Elanor. The planned app connects world articles and
 portal collections to a live D&D bestiary.
 
-## Run the initial project
+## Run locally
 
 Requires Node.js 22.12 or newer.
 
@@ -13,7 +13,7 @@ npm run dev
 ```
 
 Use `npm run build` to build the app and `npm run lint` to check the code.
-This checkpoint contains the Vite scaffold. The feature plan and acceptance
+The catalog currently reads sample Elanor entries from local JSON and filters them by name. The feature plan and acceptance
 criteria are in [PRD.md](./PRD.md) and [tasks.md](./tasks.md).
 
 ## Course prompt log

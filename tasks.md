@@ -2,7 +2,7 @@
 
 0. [x] Scaffold Vite in the course template and define the product.
    Done when Vite builds, the prompt logger is preserved, and the PRD states five observable behaviors.
-1. [ ] Build the Elanor catalog from local JSON.
+1. [x] Build the Elanor catalog from local JSON.
    Done when the catalog displays typed entries using stable keys and filters by name.
 2. [ ] Add React Router, navigation, and entry detail.
    Done when a catalog item opens its own URL and `useParams` resolves the selected entry.
