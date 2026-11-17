@@ -23,3 +23,8 @@ export interface MonsterDetails extends MonsterSummary {
 export const SRD_API_BASE_URL = 'https://www.dnd5eapi.co/api/2014'
 export const BESTIARY_PATH = '/compendium?source=bestiary'
 export const MONSTER_ENTRY_PREFIX = 'monster:'
+
+export function searchMonsters(monsters: readonly MonsterSummary[], query: string): MonsterSummary[] {
+  const searchTerm = query.trim().toLowerCase()
+  return monsters.filter((monster) => monster.name.toLowerCase().includes(searchTerm))
+}

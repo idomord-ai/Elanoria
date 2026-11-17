@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { MONSTER_ENTRY_PREFIX, type MonsterListResponse } from '../bestiary/srd'
+import { MONSTER_ENTRY_PREFIX, searchMonsters, type MonsterListResponse } from '../bestiary/srd'
 import { useSrdResource } from '../bestiary/useSrdResource'
 
 interface BestiaryListProps {
@@ -22,10 +22,7 @@ export default function BestiaryList({ query }: BestiaryListProps) {
     )
   }
 
-  const searchTerm = query.trim().toLowerCase()
-  const monsters = state.data.results.filter((monster) =>
-    monster.name.toLowerCase().includes(searchTerm),
-  )
+  const monsters = searchMonsters(state.data.results, query)
   const count = monsters.length
 
   if (count === 0) {

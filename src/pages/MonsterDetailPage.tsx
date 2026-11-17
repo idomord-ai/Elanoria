@@ -1,9 +1,12 @@
 import { Link } from 'react-router'
 import { BESTIARY_PATH, type MonsterAbility, type MonsterDetails } from '../bestiary/srd'
 import { useSrdResource } from '../bestiary/useSrdResource'
+import type { WorldEntry } from '../catalog/worldEntries'
+import EntryLinks from '../components/EntryLinks'
 
 interface MonsterDetailPageProps {
   index: string
+  backlinks: readonly WorldEntry[]
 }
 
 interface AbilitySectionProps {
@@ -37,7 +40,12 @@ function AbilitySection({ title, abilities }: AbilitySectionProps) {
   )
 }
 
-function MonsterStatBlock({ monster }: { monster: MonsterDetails }) {
+interface MonsterStatBlockProps {
+  monster: MonsterDetails
+  backlinks: readonly WorldEntry[]
+}
+
+function MonsterStatBlock({ monster, backlinks }: MonsterStatBlockProps) {
   const armorClass = monster.armor_class.map(({ value, type }) => value + ' (' + type + ')')
   const challengeRating = fractionalRatings.get(monster.challenge_rating) ?? monster.challenge_rating
 
@@ -60,11 +68,12 @@ function MonsterStatBlock({ monster }: { monster: MonsterDetails }) {
       </dl>
       <AbilitySection title="Traits" abilities={monster.special_abilities ?? []} />
       <AbilitySection title="Actions" abilities={monster.actions ?? []} />
+      <EntryLinks heading="Backlinks" entries={backlinks} />
     </article>
   )
 }
 
-export default function MonsterDetailPage({ index }: MonsterDetailPageProps) {
+export default function MonsterDetailPage({ index, backlinks }: MonsterDetailPageProps) {
   const { state, retry } = useSrdResource<MonsterDetails>('/monsters/' + encodeURIComponent(index))
 
   return (
@@ -78,7 +87,7 @@ export default function MonsterDetailPage({ index }: MonsterDetailPageProps) {
           <button type="button" onClick={retry}>Retry</button>
         </div>
       )}
-      {state.status === 'success' && <MonsterStatBlock monster={state.data} />}
+      {state.status === 'success' && <MonsterStatBlock monster={state.data} backlinks={backlinks} />}
     </>
   )
 }

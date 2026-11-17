@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from 'react-router'
 import { BESTIARY_PATH } from '../bestiary/srd'
-import { searchWorldEntries, worldEntries } from '../catalog/worldEntries'
+import { searchWorldEntries, type WorldEntry } from '../catalog/worldEntries'
 import SearchInput from '../components/SearchInput'
 import WorldEntryCard from '../components/WorldEntryCard'
 import BestiaryList from './BestiaryList'
@@ -8,12 +8,13 @@ import BestiaryList from './BestiaryList'
 type CatalogSource = 'elanor' | 'bestiary'
 
 interface CompendiumPageProps {
+  entries: readonly WorldEntry[]
   queries: Record<CatalogSource, string>
   onQueryChange: (source: CatalogSource, query: string) => void
 }
 
-function WorldEntries({ query }: { query: string }) {
-  const entries = searchWorldEntries(worldEntries, query)
+function WorldEntries({ entries: allEntries, query }: { entries: readonly WorldEntry[]; query: string }) {
+  const entries = searchWorldEntries(allEntries, query)
   const count = entries.length
 
   return (
@@ -32,7 +33,7 @@ function WorldEntries({ query }: { query: string }) {
   )
 }
 
-export default function CompendiumPage({ queries, onQueryChange }: CompendiumPageProps) {
+export default function CompendiumPage({ entries, queries, onQueryChange }: CompendiumPageProps) {
   const [searchParams] = useSearchParams()
   const source = searchParams.get('source') === 'bestiary' ? 'bestiary' : 'elanor'
   const query = queries[source]
@@ -49,7 +50,7 @@ export default function CompendiumPage({ queries, onQueryChange }: CompendiumPag
         onChange={(value) => onQueryChange(source, value)}
         placeholder={source === 'bestiary' ? 'e.g. Basilisk' : undefined}
       />
-      {source === 'bestiary' ? <BestiaryList query={query} /> : <WorldEntries query={query} />}
+      {source === 'bestiary' ? <BestiaryList query={query} /> : <WorldEntries entries={entries} query={query} />}
     </>
   )
 }
