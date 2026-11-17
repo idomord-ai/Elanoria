@@ -8,7 +8,7 @@
    Done when a catalog item opens its own URL and `useParams` resolves the selected entry.
 3. [x] Connect the public D&D bestiary.
    Done when list and detail use `fetch` inside `useEffect` and show loading, error, and data states.
-4. [ ] Add Vitest and its browser UI.
+4. [x] Add Vitest and its browser UI.
    Done when at least five meaningful logic tests pass with `npm test` and appear with `npm run test:ui`.
 5. [ ] Build the editor and backlinks.
    Done when a saved entry survives refresh and appears on the page it links to.
