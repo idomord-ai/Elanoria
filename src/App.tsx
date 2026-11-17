@@ -5,6 +5,7 @@ import CompendiumPage from './pages/CompendiumPage'
 import EntryDetailPage from './pages/EntryDetailPage'
 import EntryEditorPage from './pages/EntryEditorPage'
 import NotFoundPage from './pages/NotFoundPage'
+import PortalsPage from './pages/PortalsPage'
 
 export default function App() {
   const [queries, setQueries] = useState({ elanor: '', bestiary: '' })
@@ -20,6 +21,7 @@ export default function App() {
           </Link>
           <nav className="site-nav" aria-label="Main navigation">
             <NavLink to="/compendium" end>Compendium</NavLink>
+            <NavLink to="/portals">Portals</NavLink>
             <NavLink to="/editor">Editor</NavLink>
           </nav>
         </div>
@@ -41,6 +43,7 @@ export default function App() {
             <Route path=":id" element={<EntryDetailPage entries={entries} />} />
           </Route>
           <Route path="/editor/:id?" element={<EntryEditorPage entries={entries} onSave={saveEntry} />} />
+          <Route path="/portals" element={<PortalsPage entries={entries} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
