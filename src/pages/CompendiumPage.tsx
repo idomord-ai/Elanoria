@@ -1,5 +1,4 @@
 import { Link, useSearchParams } from 'react-router'
-import { BESTIARY_PATH } from '../bestiary/srd'
 import { entryKindGroups, searchWorldEntries, type WorldEntry } from '../catalog/worldEntries'
 import SearchInput from '../components/SearchInput'
 import WorldEntryCard from '../components/WorldEntryCard'
@@ -68,7 +67,10 @@ export default function CompendiumPage({ entries, queries, onQueryChange }: Comp
   const query = queries[source]
   const group = kindGroups.find((item) => item === searchParams.get('group'))
   const isBestiary = source === 'bestiary'
-  const worldPath = group ? '/compendium?' + new URLSearchParams({ group }) : '/compendium'
+  const worldParams = new URLSearchParams(searchParams)
+  worldParams.delete('source')
+  const bestiaryParams = new URLSearchParams(worldParams)
+  bestiaryParams.set('source', 'bestiary')
 
   return (
     <div className="atlas">
@@ -85,8 +87,8 @@ export default function CompendiumPage({ entries, queries, onQueryChange }: Comp
         </div>
       </section>
       <nav className="catalog-sources" aria-label="Compendium sections">
-        <Link to={worldPath} aria-current={!isBestiary ? 'page' : undefined}>Elanor</Link>
-        <Link to={group ? `${BESTIARY_PATH}&${new URLSearchParams({ group })}` : BESTIARY_PATH} aria-current={isBestiary ? 'page' : undefined}>
+        <Link to={{ search: worldParams.toString() }} aria-current={!isBestiary ? 'page' : undefined}>Elanor</Link>
+        <Link to={{ search: bestiaryParams.toString() }} aria-current={isBestiary ? 'page' : undefined}>
           D&amp;D Bestiary
         </Link>
       </nav>
@@ -101,7 +103,11 @@ export default function CompendiumPage({ entries, queries, onQueryChange }: Comp
             entries={entries}
             query={query}
             group={group}
-            onGroupChange={(selected) => setSearchParams(selected ? { group: selected } : {}, { replace: true })}
+            onGroupChange={(selected) => {
+              if (selected) worldParams.set('group', selected)
+              else worldParams.delete('group')
+              setSearchParams(worldParams, { replace: true })
+            }}
           />
         )}
       </section>

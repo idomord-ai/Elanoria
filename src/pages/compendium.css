@@ -215,7 +215,15 @@
 
 @media (max-width: 36rem) {
   .atlas-hero {
-    min-height: 19rem;
+    min-height: 16.5rem;
+  }
+
+  .atlas-hero__content {
+    padding: 1.25rem;
+  }
+
+  .atlas-hero h1 {
+    font-size: clamp(2rem, 10vw, 2.8rem);
   }
 
   .atlas-hero__art {
@@ -229,5 +237,9 @@
 
   .atlas .entry-grid {
     grid-template-columns: 1fr;
+  }
+
+  .atlas-filters button {
+    min-height: 2.75rem;
   }
 }

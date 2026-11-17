@@ -39,8 +39,8 @@
 .atlas-card--places[data-kind="Location"] { --card-tint: #d2a68e; }
 .atlas-card--bestiary {
   --card-tint: #b7c8a1;
-  grid-template-rows: 1fr;
-  min-height: 5.25rem;
+  grid-template-rows: auto 1fr;
+  min-height: 8rem;
 }
 
 .atlas-card__glyph {
@@ -183,14 +183,20 @@
   clip-path: polygon(0 0, 100% 0, 76% 50%, 100% 100%, 0 100%);
 }
 
-.atlas-card--bestiary .atlas-card__glyph > span::before {
-  content: '';
-  inset: 2px 8px;
-  border-radius: 100% 15%;
-  background: currentColor;
-  box-shadow: -4px 2px currentColor, 4px -2px currentColor;
-  transform: rotate(30deg);
+.atlas-card--bestiary .atlas-card__glyph > span {
+  display: grid;
+  place-items: center;
+  width: auto;
+  height: auto;
+  font-family: 'Segoe UI Symbol', 'DejaVu Sans', sans-serif;
+  font-size: 1.375rem;
+  line-height: 1;
 }
+
+.atlas-card--bestiary:is([data-kind="celestial"], [data-kind="construct"]) { --card-tint: #ddc68d; }
+.atlas-card--bestiary:is([data-kind="dragon"], [data-kind="fiend"], [data-kind="giant"]) { --card-tint: #d4a493; }
+.atlas-card--bestiary:is([data-kind="aberration"], [data-kind="fey"], [data-kind="undead"]) { --card-tint: #c4b4d4; }
+.atlas-card--bestiary:is([data-kind="elemental"], [data-kind="ooze"], [data-kind="plant"]) { --card-tint: #9ebfb7; }
 
 .atlas-card__kind {
   margin: 0 0 0.25rem;
@@ -252,6 +258,39 @@
   overflow-wrap: anywhere;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+.atlas-card__stats {
+  grid-column: 1 / -1;
+  align-self: start;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding-block-start: 0.55rem;
+  border-top: 1px solid var(--card-line);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.atlas-card__stats > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.1rem 0.35rem;
+}
+
+.atlas-card__stats dt {
+  color: #b9c4b7;
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+}
+
+.atlas-card__stats dd {
+  margin: 0;
+  color: #f0e6d1;
+  font-weight: 600;
 }
 
 @media (prefers-reduced-motion: reduce) {

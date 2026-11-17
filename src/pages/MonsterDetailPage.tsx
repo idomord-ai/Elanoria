@@ -1,5 +1,5 @@
-import { Link } from 'react-router'
-import { BESTIARY_PATH, type MonsterAbility, type MonsterDetails } from '../bestiary/srd'
+import { Link, useLocation } from 'react-router'
+import { BESTIARY_PATH, formatChallengeRating, type MonsterAbility, type MonsterDetails } from '../bestiary/srd'
 import { useSrdResource } from '../bestiary/useSrdResource'
 import type { WorldEntry } from '../catalog/worldEntries'
 import EntryLinks from '../components/EntryLinks'
@@ -13,12 +13,6 @@ interface AbilitySectionProps {
   title: string
   abilities: readonly MonsterAbility[]
 }
-
-const fractionalRatings = new Map([
-  [0.125, '1/8'],
-  [0.25, '1/4'],
-  [0.5, '1/2'],
-])
 
 function AbilitySection({ title, abilities }: AbilitySectionProps) {
   return (
@@ -47,7 +41,7 @@ interface MonsterStatBlockProps {
 
 function MonsterStatBlock({ monster, backlinks }: MonsterStatBlockProps) {
   const armorClass = monster.armor_class.map(({ value, type }) => value + ' (' + type + ')')
-  const challengeRating = fractionalRatings.get(monster.challenge_rating) ?? monster.challenge_rating
+  const challengeRating = formatChallengeRating(monster.challenge_rating)
 
   return (
     <article className="entry-detail">
@@ -75,10 +69,14 @@ function MonsterStatBlock({ monster, backlinks }: MonsterStatBlockProps) {
 
 export default function MonsterDetailPage({ index, backlinks }: MonsterDetailPageProps) {
   const { state, retry } = useSrdResource<MonsterDetails>('/monsters/' + encodeURIComponent(index))
+  const { state: navigationState } = useLocation()
+  const previousSearch: unknown = navigationState?.bestiarySearch
+  const backSearch = typeof previousSearch === 'string' ? new URLSearchParams(previousSearch) : undefined
+  const backPath = backSearch?.get('source') === 'bestiary' ? '/compendium?' + backSearch : BESTIARY_PATH
 
   return (
     <>
-      <Link className="back-link" to={BESTIARY_PATH}>Back to bestiary</Link>
+      <Link className="back-link" to={backPath}>Back to bestiary</Link>
       {state.status === 'loading' && <p role="status">Loading monster…</p>}
       {state.status === 'not-found' && <h1>Monster not found</h1>}
       {state.status === 'error' && (

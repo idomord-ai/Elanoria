@@ -10,20 +10,33 @@ interface CatalogCardProps {
   tone: CatalogCardTone
   to: string
   summary?: string
+  glyph?: string
+  stats?: readonly { label: string; value: number | string }[]
+  state?: unknown
 }
 
-export default function CatalogCard({ title, kind, tone, to, summary }: CatalogCardProps) {
+export default function CatalogCard({ title, kind, tone, to, summary, glyph, stats, state }: CatalogCardProps) {
   const titleId = useId()
 
   return (
-    <Link className={`atlas-card atlas-card--${tone}`} data-kind={kind} to={to} aria-labelledby={titleId}>
-      <span className="atlas-card__glyph" aria-hidden="true"><span /></span>
+    <Link className={`atlas-card atlas-card--${tone}`} data-kind={kind} to={to} state={state} aria-labelledby={titleId}>
+      <span className="atlas-card__glyph" aria-hidden="true" data-glyph={glyph}><span>{glyph}</span></span>
       <div className="atlas-card__heading">
         <p className="atlas-card__kind">{kind}</p>
         <h3 className="atlas-card__title" id={titleId}>{title}</h3>
       </div>
       <span className="atlas-card__arrow" aria-hidden="true" />
       {summary && <p className="atlas-card__summary">{summary}</p>}
+      {stats && (
+        <dl className="atlas-card__stats">
+          {stats.map(({ label, value }) => (
+            <div key={label}>
+              <dt>{label}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
     </Link>
   )
 }

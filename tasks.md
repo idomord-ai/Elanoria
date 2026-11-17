@@ -14,7 +14,7 @@
    Done when a saved entry survives refresh and appears on the page it links to.
 6. [x] Build the Portal Nexus.
    Done when two portals can link to the same entry and reflect an edit to that entry.
-7. [ ] Finish responsive CSS and the README.
+7. [x] Finish responsive CSS and the README.
    Done when navigation and forms work on a narrow screen, the app builds, and the README explains how to run the app and tests.
 
 After reviewing each task, record what you checked and what you changed in

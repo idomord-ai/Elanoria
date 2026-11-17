@@ -1,0 +1,51 @@
+.bestiary-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 0.7fr)) minmax(0, 1.25fr) minmax(0, 0.95fr);
+  gap: 0.55rem 0.75rem;
+  margin-block: 0.8rem 1rem;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: #142420;
+}
+
+.bestiary-controls label {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-items: end;
+  gap: 0.3rem;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.bestiary-controls select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.65rem;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid #43554b;
+  border-radius: 0.35rem;
+  background: #1a2d27;
+  color: #f1ede2;
+  color-scheme: dark;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.bestiary-controls select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 48rem) {
+  .bestiary-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bestiary-controls label:first-child {
+    grid-column: 1 / -1;
+  }
+}
