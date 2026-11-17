@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Navigate, NavLink, Route, Routes } from 'react-router'
+import { Link, Navigate, NavLink, Route, Routes } from 'react-router'
 import { useWorldEntries } from './catalog/useWorldEntries'
 import CompendiumPage from './pages/CompendiumPage'
 import EntryDetailPage from './pages/EntryDetailPage'
@@ -14,7 +14,10 @@ export default function App() {
     <>
       <header className="site-header">
         <div className="frame header-content">
-          <span className="brand">Elanoria</span>
+          <Link className="brand" to="/compendium">
+            <span className="brand__mark" aria-hidden="true">✧</span>
+            Elanoria
+          </Link>
           <nav className="site-nav" aria-label="Main navigation">
             <NavLink to="/compendium" end>Compendium</NavLink>
             <NavLink to="/editor">Editor</NavLink>

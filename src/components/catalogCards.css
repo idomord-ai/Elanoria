@@ -1,0 +1,262 @@
+.atlas-card {
+  --card-tint: #d5b67c;
+  --card-line: #35453a;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 2.625rem minmax(0, 1fr) 1.125rem;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+  gap: 0.7rem 0.8rem;
+  min-height: 9.625rem;
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid var(--card-line);
+  border-radius: 0.45rem;
+  background: linear-gradient(145deg, #152824, #10211e);
+  color: #f0e6d1;
+  text-decoration: none;
+  transition: border-color 160ms ease;
+}
+
+.atlas-card:hover,
+.atlas-card:focus-visible {
+  border-color: var(--card-tint);
+  background: linear-gradient(145deg, #1b312a, #142822);
+}
+
+.atlas-card:focus-visible {
+  outline: 2px solid var(--card-tint);
+  outline-offset: 3px;
+}
+
+.atlas-card--actors { --card-tint: #cba7aa; }
+.atlas-card--magic { --card-tint: #bbacd4; }
+.atlas-card--lore { --card-tint: #a9c2a0; }
+.atlas-card--campaign { --card-tint: #cfa389; }
+.atlas-card--places[data-kind="World"] { --card-tint: #d9c18b; }
+.atlas-card--places[data-kind="Region"] { --card-tint: #b7c49a; }
+.atlas-card--places:is([data-kind="City"], [data-kind="Town"], [data-kind="Village"]) { --card-tint: #c4b6d0; }
+.atlas-card--places[data-kind="Location"] { --card-tint: #d2a68e; }
+.atlas-card--bestiary {
+  --card-tint: #b7c8a1;
+  grid-template-rows: 1fr;
+  min-height: 5.25rem;
+}
+
+.atlas-card__glyph {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 2.625rem;
+  height: 2.625rem;
+  border: 1px solid color-mix(in srgb, var(--card-tint) 36%, transparent);
+  border-radius: 0.32rem;
+  background: color-mix(in srgb, var(--card-tint) 10%, transparent);
+  color: var(--card-tint);
+}
+
+.atlas-card__glyph > span {
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.atlas-card__glyph > span::before,
+.atlas-card__glyph > span::after {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.atlas-card--places[data-kind="World"] .atlas-card__glyph > span::before,
+.atlas-card--places[data-kind="World"] .atlas-card__glyph > span::after {
+  content: '';
+  inset: 1px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.atlas-card--places[data-kind="World"] .atlas-card__glyph > span::after {
+  inset-inline: 5px;
+}
+
+.atlas-card--places[data-kind="Kingdom"] .atlas-card__glyph > span::before {
+  content: '';
+  inset: 2px 1px;
+  background: currentColor;
+  clip-path: polygon(0 0, 25% 0, 25% 27%, 38% 27%, 38% 0, 62% 0, 62% 27%, 75% 27%, 75% 0, 100% 0, 100% 45%, 81% 62%, 81% 100%, 19% 100%, 19% 62%, 0 45%);
+}
+
+.atlas-card--places[data-kind="Region"] .atlas-card__glyph > span::before,
+.atlas-card--places[data-kind="Region"] .atlas-card__glyph > span::after {
+  content: '';
+  bottom: 1px;
+  border: 1px solid currentColor;
+  border-right: 0;
+  border-bottom: 0;
+  transform: rotate(45deg);
+}
+
+.atlas-card--places[data-kind="Region"] .atlas-card__glyph > span::before {
+  left: 1px;
+  width: 11px;
+  height: 11px;
+}
+
+.atlas-card--places[data-kind="Region"] .atlas-card__glyph > span::after {
+  right: -1px;
+  width: 7px;
+  height: 7px;
+}
+
+.atlas-card--places:is([data-kind="City"], [data-kind="Town"], [data-kind="Village"]) .atlas-card__glyph > span::before {
+  content: '';
+  inset: 2px 0;
+  background: currentColor;
+  clip-path: polygon(0 100%, 0 56%, 18% 34%, 35% 56%, 35% 27%, 52% 0, 70% 27%, 70% 56%, 84% 32%, 100% 56%, 100% 100%, 59% 100%, 59% 72%, 43% 72%, 43% 100%);
+}
+
+.atlas-card--places[data-kind="Location"] .atlas-card__glyph > span::before {
+  content: '';
+  inset: 1px 3px 5px;
+  border: 1px solid currentColor;
+  border-radius: 50% 50% 0;
+  transform: rotate(45deg);
+}
+
+.atlas-card--places[data-kind="Location"] .atlas-card__glyph > span::after {
+  content: '';
+  inset: 5px 7px 9px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.atlas-card--actors .atlas-card__glyph > span::before {
+  content: '';
+  top: 1px;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.atlas-card--actors .atlas-card__glyph > span::after {
+  content: '';
+  bottom: 1px;
+  left: 1px;
+  width: 16px;
+  height: 7px;
+  border: 1px solid currentColor;
+  border-radius: 8px 8px 2px 2px;
+}
+
+.atlas-card--magic .atlas-card__glyph > span::before {
+  content: '';
+  inset: 0;
+  background: currentColor;
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+}
+
+.atlas-card--lore .atlas-card__glyph > span::before {
+  content: '';
+  inset: 2px 0;
+  border: 1px solid currentColor;
+  border-radius: 2px 4px 4px 2px;
+}
+
+.atlas-card--lore .atlas-card__glyph > span::after {
+  content: '';
+  inset: 4px 8px 4px auto;
+  border-left: 1px solid currentColor;
+}
+
+.atlas-card--campaign .atlas-card__glyph > span::before {
+  content: '';
+  inset: 1px 13px 1px auto;
+  border-left: 1px solid currentColor;
+}
+
+.atlas-card--campaign .atlas-card__glyph > span::after {
+  content: '';
+  inset: 2px 1px 8px 6px;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 0, 76% 50%, 100% 100%, 0 100%);
+}
+
+.atlas-card--bestiary .atlas-card__glyph > span::before {
+  content: '';
+  inset: 2px 8px;
+  border-radius: 100% 15%;
+  background: currentColor;
+  box-shadow: -4px 2px currentColor, 4px -2px currentColor;
+  transform: rotate(30deg);
+}
+
+.atlas-card__kind {
+  margin: 0 0 0.25rem;
+  color: var(--card-tint);
+  font-size: 0.625rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.atlas-card .atlas-card__title {
+  margin: 0;
+  color: inherit;
+  font-family: var(--heading-font, Georgia, serif);
+  font-size: clamp(1.25rem, 2.3vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.atlas-card__arrow {
+  position: relative;
+  width: 0.875rem;
+  height: 1px;
+  background: var(--card-tint);
+  opacity: 0.7;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.atlas-card__arrow::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid var(--card-tint);
+  border-right: 1px solid var(--card-tint);
+  transform: rotate(45deg);
+}
+
+.atlas-card:hover .atlas-card__arrow,
+.atlas-card:focus-visible .atlas-card__arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.atlas-card__summary {
+  display: -webkit-box;
+  grid-column: 1 / -1;
+  align-self: start;
+  margin: 0;
+  color: #b9c4b7;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-card,
+  .atlas-card__arrow {
+    transition: none;
+  }
+}

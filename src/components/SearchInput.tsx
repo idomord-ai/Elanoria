@@ -10,15 +10,19 @@ export default function SearchInput({ value, onChange, placeholder = 'e.g. Valci
   const id = useId()
 
   return (
-    <div className="search">
+    <div className="search" role="search">
       <label htmlFor={id}>Search by name</label>
-      <input
-        id={id}
-        type="search"
-        value={value}
-        onChange={(event) => onChange(event.currentTarget.value)}
-        placeholder={placeholder}
-      />
+      <div className="search__control">
+        <span className="search__icon" aria-hidden="true" />
+        <input
+          id={id}
+          type="search"
+          value={value}
+          onChange={(event) => onChange(event.currentTarget.value)}
+          placeholder={placeholder}
+          autoComplete="off"
+        />
+      </div>
     </div>
   )
 }

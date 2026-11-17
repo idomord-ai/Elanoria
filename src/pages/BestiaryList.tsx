@@ -1,6 +1,6 @@
-import { Link } from 'react-router'
 import { MONSTER_ENTRY_PREFIX, searchMonsters, type MonsterListResponse } from '../bestiary/srd'
 import { useSrdResource } from '../bestiary/useSrdResource'
+import CatalogCard from '../components/CatalogCard'
 
 interface BestiaryListProps {
   query: string
@@ -34,15 +34,13 @@ export default function BestiaryList({ query }: BestiaryListProps) {
       <p className="result-count" role="status">{count} {count === 1 ? 'monster' : 'monsters'}</p>
       <ul className="entry-grid">
         {monsters.map((monster) => (
-          <li className="world-entry" key={monster.index}>
-            <h2>
-              <Link
-                className="entry-link"
-                to={'/compendium/' + MONSTER_ENTRY_PREFIX + encodeURIComponent(monster.index)}
-              >
-                {monster.name}
-              </Link>
-            </h2>
+          <li key={monster.index}>
+            <CatalogCard
+              title={monster.name}
+              kind="Monster"
+              tone="bestiary"
+              to={'/compendium/' + MONSTER_ENTRY_PREFIX + encodeURIComponent(monster.index)}
+            />
           </li>
         ))}
       </ul>

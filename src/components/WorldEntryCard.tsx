@@ -1,5 +1,20 @@
-import { Link } from 'react-router'
-import type { WorldEntry } from '../catalog/worldEntries'
+import { entryKindGroups, type EntryKind, type WorldEntry } from '../catalog/worldEntries'
+import CatalogCard, { type CatalogCardTone } from './CatalogCard'
+
+type EntryKindGroup = keyof typeof entryKindGroups
+
+const groupTones: Record<EntryKindGroup, CatalogCardTone> = {
+  'Characters and groups': 'actors',
+  Places: 'places',
+  'Items and magic': 'magic',
+  Lore: 'lore',
+  Campaign: 'campaign',
+}
+
+const tonesByKind = new Map<EntryKind, CatalogCardTone>()
+for (const group of Object.keys(groupTones) as EntryKindGroup[]) {
+  for (const kind of entryKindGroups[group]) tonesByKind.set(kind, groupTones[group])
+}
 
 interface WorldEntryCardProps {
   entry: WorldEntry
@@ -7,12 +22,12 @@ interface WorldEntryCardProps {
 
 export default function WorldEntryCard({ entry }: WorldEntryCardProps) {
   return (
-    <article className="world-entry">
-      <p className="entry-kind">{entry.kind}</p>
-      <h2>
-        <Link className="entry-link" to={entry.id}>{entry.title}</Link>
-      </h2>
-      <p className="entry-summary">{entry.summary}</p>
-    </article>
+    <CatalogCard
+      title={entry.title}
+      kind={entry.kind}
+      tone={tonesByKind.get(entry.kind) ?? 'places'}
+      to={'/compendium/' + encodeURIComponent(entry.id)}
+      summary={entry.summary}
+    />
   )
 }
