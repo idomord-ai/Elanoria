@@ -7,3 +7,6 @@
 > Elanoria setup check: verify that Codex CLI automatically logs this prompt. Reply OK without running commands or editing files.
 
 בדקתי ב־VS Code שהודעת הניסיון של Codex CLI נרשמה אוטומטית ב־PROMPTS.md.
+
+פתחתי ערך מהקטלוג, בדקתי שעמוד הפרטים עובד אחרי הרענון, וראיתי שהחזרה בדפדפן שומרת על החיפוש
+

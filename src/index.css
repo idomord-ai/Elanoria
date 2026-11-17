@@ -22,13 +22,36 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
-.brand {
+.header-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
   padding-block: 1rem;
+}
+
+.brand {
   font-family: var(--heading-font);
   font-size: 1.4rem;
 }
 
-.catalog {
+.site-nav a,
+.back-link {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+.site-nav a[aria-current="page"] {
+  text-decoration-thickness: 0.15em;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.page {
   padding-block: clamp(2rem, 7vw, 4rem);
 }
 
@@ -103,6 +126,21 @@ h1 {
 .world-entry h2 {
   margin: 0.3rem 0;
   font-size: 1.4rem;
+}
+
+.entry-link {
+  color: inherit;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.15em;
+}
+
+.entry-detail {
+  max-width: 46rem;
+  margin-top: 1.75rem;
+}
+
+.entry-detail h1 {
+  margin-bottom: 0.75rem;
 }
 
 .entry-summary {

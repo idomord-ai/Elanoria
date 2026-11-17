@@ -4,7 +4,7 @@
    Done when Vite builds, the prompt logger is preserved, and the PRD states five observable behaviors.
 1. [x] Build the Elanor catalog from local JSON.
    Done when the catalog displays typed entries using stable keys and filters by name.
-2. [ ] Add React Router, navigation, and entry detail.
+2. [x] Add React Router, navigation, and entry detail.
    Done when a catalog item opens its own URL and `useParams` resolves the selected entry.
 3. [ ] Connect the public D&D bestiary.
    Done when list and detail use `fetch` inside `useEffect` and show loading, error, and data states.

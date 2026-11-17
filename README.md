@@ -13,8 +13,10 @@ npm run dev
 ```
 
 Use `npm run build` to build the app and `npm run lint` to check the code.
-The catalog currently reads sample Elanor entries from local JSON and filters them by name. The feature plan and acceptance
-criteria are in [PRD.md](./PRD.md) and [tasks.md](./tasks.md).
+The catalog at `/compendium` reads sample Elanor entries from local JSON and
+filters them by name. Each entry has a detail page at `/compendium/:id`.
+The feature plan and acceptance criteria are in [PRD.md](./PRD.md) and
+[tasks.md](./tasks.md).
 
 ## Course prompt log
 
