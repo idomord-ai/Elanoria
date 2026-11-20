@@ -9,36 +9,70 @@
     "id": "valmyre",
     "title": "Valmyre",
     "kind": "Kingdom",
-    "summary": "The Lunar Empire and home of the Crescent City."
+    "summary": "The Lunar Empire and home of the Crescent City.",
+    "kingdomTheme": "moon"
   },
   {
     "id": "aldoran",
     "title": "Aldoran",
     "kind": "Kingdom",
-    "summary": "The Sun Kingdom of Elanor."
+    "summary": "The Sun Kingdom of Elanor.",
+    "kingdomTheme": "sun"
   },
   {
     "id": "thurenderin",
     "title": "Thuren’derin",
     "kind": "Kingdom",
-    "summary": "One of the Seven Kingdoms of Elanor."
+    "summary": "A vast island hidden in the clouds, where an advanced scientific society observes the world below. Its leaders seek to ascend beyond the machines they created and become gods.",
+    "kingdomTheme": "clouds"
+  },
+  {
+    "id": "empire-of-the-crystal-dragons",
+    "title": "Empire of the Crystal Dragons",
+    "kind": "Kingdom",
+    "summary": "A desert empire of crystal dragons. Its castles rise from the sand in gems that match their dragons, from jade, sapphire, and diamond to amber and amethyst.",
+    "kingdomTheme": "crystal-dragons"
+  },
+  {
+    "id": "kingdom-of-the-red-star",
+    "title": "Kingdom of the Red Star",
+    "kind": "Kingdom",
+    "summary": "An empire in eternal darkness beneath the Red Star.",
+    "kingdomTheme": "red-star"
+  },
+  {
+    "id": "kingdom-of-awakened-creatures",
+    "title": "Kingdom of Awakened Creatures",
+    "kind": "Kingdom",
+    "summary": "The animals and monsters of this kingdom absorbed magical residue and essence from humanoids, gaining sentience and the ability to use magic. Their king is a Tyrannosaurus rex with robotic arms and a wizard hat topped by a small crown.",
+    "kingdomTheme": "awakened-wilds"
+  },
+  {
+    "id": "keepers-of-old-secrets",
+    "title": "Keepers of Old Secrets",
+    "kind": "Kingdom",
+    "summary": "A kingdom that guards knowledge from ancient times, including secrets no human needs to know.",
+    "kingdomTheme": "old-secrets"
   },
   {
     "id": "valciel",
     "title": "Valciel",
     "kind": "Region",
-    "summary": "A southern region of Valmyre."
+    "summary": "A southern region of Valmyre.",
+    "kingdomId": "valmyre"
   },
   {
     "id": "valsburg",
     "title": "Valsburg",
     "kind": "City",
-    "summary": "The capital of Valmyre, known as the Crescent City."
+    "summary": "The capital of Valmyre, known as the Crescent City.",
+    "kingdomId": "valmyre"
   },
   {
     "id": "mines-of-valciel",
     "title": "Mines of Valciel",
     "kind": "Location",
-    "summary": "An underground expedition site in Valciel."
+    "summary": "An underground expedition site in Valciel.",
+    "kingdomId": "valmyre"
   }
 ]

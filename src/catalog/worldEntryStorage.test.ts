@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { findBacklinks, worldEntries, type WorldEntryDraft } from './worldEntries'
+import { findBacklinks, getEntryKingdom, worldEntries, type WorldEntryDraft } from './worldEntries'
 import { loadWorldEntries, saveWorldEntry } from './worldEntryStorage'
 
 function createStorage() {
@@ -94,5 +94,45 @@ describe('world entry storage', () => {
 
     expect(() => saveWorldEntry(storage, draft)).toThrow('Saved articles could not be read.')
     expect(stored).toBe('{"entries":[]}')
+  })
+
+  it('inherits the default kingdom background for older edits and remembers an Atlas reset', () => {
+    const storage = createStorage()
+    const olderEdit = { ...draft, id: 'valmyre', kind: 'Kingdom' as const }
+    storage.setItem('elanoria.worldEntries', JSON.stringify([olderEdit]))
+
+    expect(loadWorldEntries(storage).find(({ id }) => id === olderEdit.id)?.kingdomTheme).toBe('moon')
+
+    saveWorldEntry(storage, { ...olderEdit, kingdomTheme: 'old-secrets' })
+    expect(loadWorldEntries(storage).find(({ id }) => id === olderEdit.id)?.kingdomTheme).toBe('old-secrets')
+
+    saveWorldEntry(storage, { ...olderEdit, kingdomTheme: null })
+    expect(loadWorldEntries(storage).find(({ id }) => id === olderEdit.id)?.kingdomTheme).toBeUndefined()
+  })
+
+  it('inherits an older entry’s kingdom, supports reassignment, and keeps a cleared affiliation', () => {
+    const storage = createStorage()
+    const olderEdit = { ...draft, id: 'valciel', kind: 'Region' as const }
+    storage.setItem('elanoria.worldEntries', JSON.stringify([olderEdit]))
+
+    const { entry, entries } = saveWorldEntry(storage, olderEdit)
+    expect(getEntryKingdom(entry, entries)?.id).toBe('valmyre')
+
+    const updated = saveWorldEntry(storage, { ...olderEdit, kingdomId: 'aldoran' })
+    expect(getEntryKingdom(updated.entry, loadWorldEntries(storage))?.id).toBe('aldoran')
+
+    saveWorldEntry(storage, { ...olderEdit, kingdomId: null })
+    saveWorldEntry(storage, olderEdit)
+    expect(loadWorldEntries(storage).find(({ id }) => id === olderEdit.id)?.kingdomId).toBeUndefined()
+  })
+
+  it('tolerates a formerly valid affiliation and rejects a newly selected non-kingdom', () => {
+    const storage = createStorage()
+    const { entry } = saveWorldEntry(storage, { ...draft, kingdomId: 'valmyre' })
+    saveWorldEntry(storage, { ...draft, id: 'valmyre', kind: 'Town' })
+
+    expect(getEntryKingdom(entry, loadWorldEntries(storage))).toBeUndefined()
+    expect(() => saveWorldEntry(storage, { ...draft, id: entry.id, kingdomId: entry.kingdomId })).not.toThrow()
+    expect(() => saveWorldEntry(storage, { ...draft, kingdomId: 'valmyre' })).toThrow('Select an existing kingdom for this entry.')
   })
 })

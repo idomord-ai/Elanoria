@@ -1,0 +1,225 @@
+.kingdom-backdrop {
+  --kingdom-ground: #152824;
+  --kingdom-shade: 9 17 15;
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--kingdom-ground);
+  pointer-events: none;
+}
+
+.kingdom-backdrop__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--kingdom-art-position, center);
+}
+
+.kingdom-backdrop__motion {
+  position: absolute;
+  inset: -12%;
+  opacity: var(--kingdom-effect-opacity, 0.5);
+  background: var(--kingdom-effect-art, none);
+}
+
+.kingdom-backdrop::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(var(--kingdom-shade) / 0.98), rgb(var(--kingdom-shade) / 0.89) 32%, rgb(var(--kingdom-shade) / 0.65) 49%, transparent 79%),
+    linear-gradient(0deg, rgb(var(--kingdom-shade) / 0.72), transparent 65%);
+  content: '';
+}
+
+.kingdom-backdrop[data-kingdom-theme="moon"] {
+  --kingdom-ground: #23304a;
+  --kingdom-shade: 11 15 32;
+  --kingdom-art-position: 65% 14%;
+  --kingdom-art-from: translate(1.5%, 1%) scale(1.07);
+  --kingdom-art-to: translate(-2.5%, 1.5%) scale(1.13);
+  --kingdom-art-duration: 17s;
+  --kingdom-effect-opacity: 0.55;
+  --kingdom-effect: kingdom-moon-fog 4.8s ease-out;
+  --kingdom-effect-art:
+    radial-gradient(ellipse 34% 16% at 70% 69%, #c8e0f2a8, transparent 76%),
+    radial-gradient(ellipse 30% 18% at 89% 64%, #a9bce485, transparent 76%),
+    radial-gradient(ellipse 20% 13% at 78% 36%, #cfdfff59, transparent 79%);
+}
+
+.kingdom-backdrop[data-kingdom-theme="sun"] {
+  --kingdom-ground: #4e3024;
+  --kingdom-shade: 27 16 12;
+  --kingdom-art-position: 62% 34%;
+  --kingdom-art-from: translate(1%, 0.5%) scale(1.04);
+  --kingdom-art-to: translate(-3%, 1%) scale(1.15);
+  --kingdom-art-duration: 14s;
+  --kingdom-effect-opacity: 0.32;
+  --kingdom-effect: kingdom-sun-rays 4.5s ease-out;
+  --kingdom-effect-art:
+    radial-gradient(ellipse 28% 48% at 77% 28%, #ffdd8f71, transparent 77%),
+    conic-gradient(from 137deg at 77% 28%, #ffd89100, #ffd89178 11deg, #ffd89100 20deg, #ffd89100 35deg, #ffd89159 49deg, #ffd89100 58deg, #ffd89100 73deg, #ffd89160 87deg, #ffd89100 104deg);
+}
+
+.kingdom-backdrop[data-kingdom-theme="crystal-dragons"] {
+  --kingdom-ground: #453c4b;
+  --kingdom-shade: 25 17 31;
+  --kingdom-art-position: 60% 5%;
+  --kingdom-art-from: translate(-3.4%, 3%) scale(1.1);
+  --kingdom-art-to: translate(3.6%, 2.5%) scale(1.12);
+  --kingdom-art-duration: 16s;
+  --kingdom-effect-opacity: 0.48;
+  --kingdom-effect: kingdom-crystal-glints 4.2s ease-out;
+  --kingdom-effect-art:
+    radial-gradient(circle 2px at 64% 39%, #fff6e2 25%, transparent),
+    radial-gradient(circle 3px at 73% 51%, #ede6ff 25%, transparent),
+    radial-gradient(circle 2px at 86% 55%, #ffe5b3 25%, transparent),
+    radial-gradient(circle 2px at 82% 69%, #fff8e7 25%, transparent),
+    radial-gradient(circle 3px at 67% 73%, #d7cbff 25%, transparent),
+    linear-gradient(116deg, transparent 58%, #fff4db4d 60%, transparent 62%, transparent 71%, #c9b7fc55 72%, transparent 74%);
+}
+
+.kingdom-backdrop[data-kingdom-theme="red-star"] {
+  --kingdom-ground: #1b121d;
+  --kingdom-shade: 18 10 20;
+  --kingdom-art-position: 66% 5%;
+  --kingdom-art-from: translateY(0.5%) scale(1.02);
+  --kingdom-art-to: translate(-1%, 1.5%) scale(1.09);
+  --kingdom-art-duration: 20s;
+  --kingdom-effect-opacity: 0.43;
+  --kingdom-effect: kingdom-red-star-rise 4.7s ease-out;
+  --kingdom-effect-art:
+    radial-gradient(ellipse 26% 38% at 65% 21%, #923c56a3, transparent 74%),
+    radial-gradient(ellipse 45% 28% at 83% 83%, #170e22dc, transparent 86%);
+}
+
+.kingdom-backdrop[data-kingdom-theme="awakened-wilds"] {
+  --kingdom-ground: #174736;
+  --kingdom-shade: 9 27 20;
+  --kingdom-art-position: 63% 2%;
+  --kingdom-art-from: translate(-1.2%, 2.8%) scale(1.06);
+  --kingdom-art-to: translate(2.5%, 3.4%) scale(1.08);
+  --kingdom-art-duration: 13s;
+  --kingdom-effect-opacity: 0.62;
+  --kingdom-effect: kingdom-essence-motes 4.6s ease-out;
+  --kingdom-effect-art:
+    radial-gradient(circle 3px at 55% 62%, #e2ffc2 22%, #a3ed9c69 52%, transparent),
+    radial-gradient(circle 5px at 61% 53%, #e4ffbf 16%, #a2f78870 40%, transparent),
+    radial-gradient(circle 3px at 66% 73%, #cef6ff 22%, #86e1ff6e 52%, transparent),
+    radial-gradient(circle 5px at 73% 58%, #f5ffc8 16%, #d2fd7978 40%, transparent),
+    radial-gradient(circle 6px at 79% 42%, #ccffed 16%, #70fbd096 40%, transparent),
+    radial-gradient(circle 3px at 82% 53%, #f5d0ff 22%, #dc9cf46f 52%, transparent),
+    radial-gradient(circle 4px at 87% 62%, #f4ffad 19%, #d0f9846e 49%, transparent),
+    radial-gradient(ellipse 36% 23% at 79% 64%, #4fc19363, transparent 77%);
+}
+
+.kingdom-backdrop[data-kingdom-theme="clouds"] {
+  --kingdom-ground: #304757;
+  --kingdom-shade: 12 22 32;
+  --kingdom-art-position: 63% 33%;
+  --kingdom-art-from: translate(3.8%, 0.5%) scale(1.1);
+  --kingdom-art-to: translate(-4.3%, 1.4%) scale(1.13);
+  --kingdom-art-duration: 18s;
+  --kingdom-effect-opacity: 0.49;
+  --kingdom-effect: kingdom-cloud-current 4.9s ease-out;
+  --kingdom-effect-art:
+    radial-gradient(ellipse 27% 11% at 68% 65%, #dbeaf68a, transparent 80%),
+    radial-gradient(ellipse 26% 15% at 87% 68%, #dae6f1a0, transparent 75%),
+    radial-gradient(ellipse 24% 9% at 85% 35%, #c1deed8c, transparent 71%),
+    linear-gradient(8deg, transparent 70%, #eef5f84a 70.5%, transparent 71.1%);
+}
+
+.kingdom-backdrop[data-kingdom-theme="old-secrets"] {
+  --kingdom-ground: #3d303c;
+  --kingdom-shade: 22 14 24;
+  --kingdom-art-position: 62% 47%;
+  --kingdom-art-from: translate(0.5%, 0.8%) scale(1.04);
+  --kingdom-art-to: translate(-2.5%, -1.5%) scale(1.15);
+  --kingdom-art-duration: 19s;
+  --kingdom-effect-opacity: 0.57;
+  --kingdom-effect: kingdom-archive-light 4.4s ease-out;
+  --kingdom-effect-art:
+    radial-gradient(ellipse 31% 50% at 87% 63%, #171021cf, transparent 78%),
+    radial-gradient(circle 4rem at 73% 43%, transparent 66%, #e5c5af67 67% 68%, transparent 69% 77%, #e5c5af49 78% 79%, transparent 80%),
+    radial-gradient(ellipse 18% 34% at 72% 42%, #d8b49180, transparent 76%);
+}
+
+.kingdom-editor-preview {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  min-height: clamp(11rem, 25vw, 16rem);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+}
+
+@media (max-width: 40rem) {
+  .kingdom-backdrop::after {
+    background:
+      linear-gradient(0deg, rgb(var(--kingdom-shade) / 0.99), rgb(var(--kingdom-shade) / 0.87) 46%, rgb(var(--kingdom-shade) / 0.36) 79%, transparent),
+      linear-gradient(90deg, rgb(var(--kingdom-shade) / 0.5), transparent 87%);
+  }
+}
+
+.kingdom-editor-preview .kingdom-backdrop::after {
+  background: linear-gradient(0deg, rgb(var(--kingdom-shade) / 0.38), transparent 56%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .kingdom-backdrop__motion {
+    animation: var(--kingdom-effect, none);
+  }
+
+  .kingdom-hero .kingdom-backdrop__art {
+    animation: kingdom-art-drift var(--kingdom-art-duration) ease-in-out infinite alternate;
+  }
+
+  .kingdom-hero .kingdom-backdrop__motion {
+    animation-duration: 8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+}
+
+@keyframes kingdom-art-drift {
+  from { transform: var(--kingdom-art-from); }
+  to { transform: var(--kingdom-art-to); }
+}
+
+@keyframes kingdom-moon-fog {
+  from { transform: translate(-9%, 5%); opacity: 0.3; }
+}
+
+@keyframes kingdom-sun-rays {
+  from { transform: rotate(-6deg) scale(1.04); opacity: 0.19; }
+  62% { opacity: 0.47; }
+}
+
+@keyframes kingdom-crystal-glints {
+  from { transform: translateX(-8%); opacity: 0.16; }
+  55% { opacity: 0.67; }
+}
+
+@keyframes kingdom-red-star-rise {
+  from { transform: scale(0.95); opacity: 0.26; }
+  68% { opacity: 0.57; }
+}
+
+@keyframes kingdom-essence-motes {
+  from { transform: translate(1%, 9%); opacity: 0.26; }
+  74% { opacity: 0.73; }
+}
+
+@keyframes kingdom-cloud-current {
+  from { transform: translate(10%, -3%); opacity: 0.7; }
+}
+
+@keyframes kingdom-archive-light {
+  from { transform: translate(6%, -2%) scale(1.08); opacity: 0.27; }
+  70% { opacity: 0.68; }
+}

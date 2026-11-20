@@ -1,0 +1,85 @@
+.character-spells,
+.character-spells__picker {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.character-spells summary {
+  width: fit-content;
+  padding-block: 0.4rem;
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 650;
+}
+
+.character-spells__picker {
+  margin-block-start: 0.55rem;
+}
+
+.character-spells__list {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.character-spells__list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--sheet-edge, #405747);
+  border-radius: 0.35rem;
+  background: var(--sheet-panel, #1d322d);
+}
+
+.character-spells__label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.character-spells__label a {
+  color: var(--sheet-accent, var(--accent));
+  text-underline-offset: 0.2em;
+}
+
+.character-spells__label small {
+  margin-inline-start: 0.55rem;
+  color: var(--sheet-muted, var(--muted));
+}
+
+.character-spells__status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.character-spells__count {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.character-spells :is(p, .editor-error) {
+  margin: 0;
+}
+
+.character-spells button {
+  flex: none;
+  min-height: 2rem;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid #63745f;
+  border-radius: 0.3rem;
+  background: #213a32;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.character-spells button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

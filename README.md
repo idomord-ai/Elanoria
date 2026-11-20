@@ -5,7 +5,7 @@ collections to a live D&D bestiary.
 
 ## Run locally
 
-Use Node.js 22.12+ on the Node 22 release line, Node.js 24, or Node.js 26+.
+Use Node.js 22.13+ on the Node 22 release line, Node.js 24, or Node.js 26+.
 
 ```sh
 npm ci
@@ -31,6 +31,50 @@ same address and port to access your saved articles and portals.
 
 Articles and portals are saved in the current browser. The D&D Bestiary needs
 an internet connection to load the SRD data.
+
+## Character sheets and local PDF import
+
+Open **Characters** to create a player character or edit a sheet. Character
+sheets and visual references are saved in this browser. Keep the same local
+address and port to reopen them.
+
+Open **Spells** to search the 2014 and 2024 SRDs. In a character sheet, use
+**Add spells** and choose the edition for each spell before saving. A mixed
+sheet can link to either edition, and each saved link opens that edition's
+spell details. Spell content comes from the [D&D 5e SRD API](https://docs.dnd5eapi.co/2024/introduction)
+and the [D&D System Reference Documents](https://www.dndbeyond.com/srd) (CC BY 4.0).
+
+Use **Character art and visual references** on a character page to attach
+JPEG, PNG or WebP files and add captions. In **Memoria**, create a collection
+and record a memory, event or scene. Link its characters to open their visual
+references from the record. These files and records stay in this browser.
+
+The Windows PDF importer uses the official Sign in with ChatGPT DevKit.
+It requires a ChatGPT account eligible for plan usage and asks for permission
+in the browser. It uses Windows credential protection for saved sign-in data
+and keeps those credentials outside the repository.
+
+If the DevKit is not installed, clone [OpenAI's DevKit](https://github.com/openai/sign-in-with-chatgpt-devkit)
+as a sibling folder named `siwc-devkit`. The importer was developed with DevKit
+commit `0a36fefeb913055c8c7a1a29b63d82b96b2e841a`. In the DevKit folder, run
+`npm ci --workspace @siwc/local --include-workspace-root --ignore-scripts`,
+then `npm run build -w @siwc/local`. You can also set
+`ELANORIA_SIWC_SDK` to the absolute path of its built `packages/local/dist/index.js`.
+
+In Elanoria, run `npm ci` and `npm run dev:chatgpt` from your regular Windows
+terminal. The helper needs network access to ChatGPT and access to your default
+browser to start sign-in. Open
+`http://127.0.0.1:5174/characters`, open a sheet in edit mode and select
+**Import from PDF**. If you already have saved characters, start the helper on
+the same port and keep using the same browser address so your saved data remains
+available. Stop your previous Elanoria server first, then set
+`ELANORIA_CHATGPT_PORT` to that port before running `npm run dev:chatgpt`. For
+example, in PowerShell use `$env:ELANORIA_CHATGPT_PORT = '5173'` for port 5173.
+
+Once connected, choose a PDF with selectable text or
+filled PDF form fields. The local helper reads up to 20 pages and sends
+extracted text to ChatGPT. Scans without text need OCR first. Review the
+suggestions, apply the fields you want, edit them as needed and save the sheet.
 
 ## Test and build
 

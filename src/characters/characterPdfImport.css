@@ -1,0 +1,131 @@
+.character-pdf {
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: #132522;
+}
+
+.character-pdf > summary {
+  padding: 0.65rem 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.character-pdf > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.character-pdf__body,
+.character-pdf__connection {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.character-pdf__body {
+  padding: 0.75rem 0.8rem 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+.character-pdf__body p {
+  margin: 0;
+}
+
+.character-pdf__connection p,
+.character-pdf__hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.character-pdf__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.character-pdf__actions button {
+  min-height: 2.75rem;
+}
+
+.character-pdf__actions button:not(:disabled):hover {
+  border-color: var(--accent);
+}
+
+.character-pdf__actions button:disabled {
+  opacity: 0.56;
+  cursor: default;
+}
+
+.character-pdf .editor-field input[type="file"] {
+  min-width: 0;
+  padding: 0.35rem;
+}
+
+.character-pdf input[type="file"]::file-selector-button {
+  margin-inline-end: 0.6rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  background: #254037;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.character-pdf__status {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.character-pdf__status:empty {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.character-pdf__review {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.character-pdf__review h2 {
+  margin: 0;
+  font-size: 1.22rem;
+}
+
+.character-pdf__review ul {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.character-pdf__review label {
+  display: grid;
+  grid-template-columns: min-content minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.15rem 0.5rem;
+  padding: 0.42rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.character-pdf__review input {
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.character-pdf__review input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.character-pdf__review strong {
+  grid-column: 2;
+}

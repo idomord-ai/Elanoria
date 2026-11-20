@@ -1,0 +1,138 @@
+.character-art {
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  padding-block: 1.25rem 0;
+  scroll-margin-top: 1rem;
+}
+
+.character-art h2,
+.character-art h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.character-art__upload {
+  margin-top: 0.9rem;
+  max-width: 25rem;
+}
+
+.character-art__upload input {
+  width: 100%;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.character-art__hint,
+.character-art__status {
+  margin: 0.4rem 0;
+  color: var(--muted);
+}
+
+.character-art__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.character-art__card {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: #142521;
+}
+
+.character-art__thumbnail {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 0;
+  border-radius: 0.45rem 0.45rem 0 0;
+  padding: 0;
+  background: #0b1615;
+  cursor: zoom-in;
+}
+
+.character-art__thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: contain;
+}
+
+.character-art__details {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.8rem;
+}
+
+.character-art__card h3,
+.character-art__preview h3 {
+  font-family: var(--heading-font);
+  font-size: 1.35rem;
+}
+
+.character-art__caption {
+  margin-block: 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.character-art__caption-form {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.character-art__actions,
+.character-art__preview-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.7rem;
+}
+
+.character-art__preview-header {
+  justify-content: space-between;
+}
+
+.character-art__actions button,
+.character-art__preview button {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  color: var(--accent);
+  background: #172a25;
+  font: inherit;
+  cursor: pointer;
+}
+
+.character-art__actions button:hover,
+.character-art__preview button:hover {
+  border-color: var(--accent);
+}
+
+.character-art__preview {
+  box-sizing: border-box;
+  width: min(52rem, calc(100% - 1.5rem));
+  max-height: calc(100% - 1.5rem);
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: inherit;
+  background: #142521;
+}
+
+.character-art__preview::backdrop {
+  background: #051311cd;
+}
+
+.character-art__preview img {
+  display: block;
+  max-width: 100%;
+  max-height: 68vh;
+  margin: 0.65rem auto;
+  object-fit: contain;
+}

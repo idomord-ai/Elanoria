@@ -1,5 +1,6 @@
 import { Link, useSearchParams } from 'react-router'
-import { entryKindGroups, searchWorldEntries, type WorldEntry } from '../catalog/worldEntries'
+import { entryKindGroups, getEntryKingdom, searchWorldEntries, type WorldEntry } from '../catalog/worldEntries'
+import BackgroundMotionToggle, { type BackgroundMotion } from '../components/BackgroundMotionToggle'
 import SearchInput from '../components/SearchInput'
 import WorldEntryCard from '../components/WorldEntryCard'
 import BestiaryList from './BestiaryList'
@@ -13,6 +14,7 @@ interface CompendiumPageProps {
   entries: readonly WorldEntry[]
   queries: Record<CatalogSource, string>
   onQueryChange: (source: CatalogSource, query: string) => void
+  backgroundMotion: BackgroundMotion
 }
 
 interface WorldEntriesProps {
@@ -52,7 +54,7 @@ function WorldEntries({ entries: allEntries, query, group, onGroupChange }: Worl
         <ul className="entry-grid">
           {entries.map((entry) => (
             <li key={entry.id}>
-              <WorldEntryCard entry={entry} />
+              <WorldEntryCard entry={entry} kingdom={getEntryKingdom(entry, allEntries)} />
             </li>
           ))}
         </ul>
@@ -61,7 +63,7 @@ function WorldEntries({ entries: allEntries, query, group, onGroupChange }: Worl
   )
 }
 
-export default function CompendiumPage({ entries, queries, onQueryChange }: CompendiumPageProps) {
+export default function CompendiumPage({ entries, queries, onQueryChange, backgroundMotion }: CompendiumPageProps) {
   const [searchParams, setSearchParams] = useSearchParams()
   const source = searchParams.get('source') === 'bestiary' ? 'bestiary' : 'elanor'
   const query = queries[source]
@@ -76,6 +78,7 @@ export default function CompendiumPage({ entries, queries, onQueryChange }: Comp
     <div className="atlas">
       <section className="atlas-hero" aria-labelledby="atlas-title">
         <img className="atlas-hero__art" src={import.meta.env.BASE_URL + 'elanor-atlas.webp'} alt="" fetchPriority="high" />
+        <BackgroundMotionToggle {...backgroundMotion} />
         <div className="atlas-hero__content">
           <h1 id="atlas-title">Elanor Compendium</h1>
           <p>{isBestiary ? 'Find monsters and open their D&D stat blocks.' : 'Explore the people, places, and stories of the Seven Kingdoms.'}</p>

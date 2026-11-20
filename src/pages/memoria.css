@@ -1,0 +1,125 @@
+.memoria {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.6rem);
+  overflow-wrap: anywhere;
+}
+
+.memoria__header,
+.memoria-collection__header,
+.memoria-collection__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem 1rem;
+}
+
+.memoria__header {
+  padding-block-end: 1.15rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.memoria__header h1 {
+  margin-block-end: 0.4rem;
+}
+
+.memoria__header p,
+.memoria__empty,
+.memoria__status {
+  margin: 0;
+  color: var(--muted);
+}
+
+.memoria__status { color: var(--accent); }
+
+.memoria-form,
+.memoria-collection {
+  box-sizing: border-box;
+  min-width: 0;
+  padding: clamp(0.9rem, 3vw, 1.45rem);
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  background: linear-gradient(140deg, #162924, #10211e);
+}
+
+.memoria-form {
+  width: min(100%, 42rem);
+}
+
+.memoria-form :is(h2, h3),
+.memoria-collection__header h2,
+.memoria-record h3 {
+  margin: 0;
+  font-family: var(--heading-font, Georgia, serif);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.memoria-form textarea {
+  resize: vertical;
+}
+
+.memoria-collection {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.memoria-collection__header {
+  padding-block-end: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.memoria-collection__records {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 0.75rem;
+}
+
+.memoria-record {
+  display: grid;
+  justify-items: start;
+  align-content: start;
+  gap: 0.55rem;
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  background: #192c26;
+}
+
+.memoria-record__type,
+.memoria-record__narrative {
+  margin: 0;
+}
+
+.memoria-record__type {
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.memoria-record__narrative {
+  color: var(--muted);
+  white-space: pre-wrap;
+}
+
+.memoria-record__characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.memoria-record__characters li {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+}

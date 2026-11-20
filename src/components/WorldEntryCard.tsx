@@ -18,9 +18,10 @@ for (const group of Object.keys(groupTones) as EntryKindGroup[]) {
 
 interface WorldEntryCardProps {
   entry: WorldEntry
+  kingdom?: WorldEntry
 }
 
-export default function WorldEntryCard({ entry }: WorldEntryCardProps) {
+export default function WorldEntryCard({ entry, kingdom }: WorldEntryCardProps) {
   return (
     <CatalogCard
       title={entry.title}
@@ -28,6 +29,8 @@ export default function WorldEntryCard({ entry }: WorldEntryCardProps) {
       tone={tonesByKind.get(entry.kind) ?? 'places'}
       to={'/compendium/' + encodeURIComponent(entry.id)}
       summary={entry.summary}
+      kingdomTheme={kingdom?.kingdomTheme}
+      kingdomName={kingdom?.id === entry.id ? undefined : kingdom?.title}
     />
   )
 }

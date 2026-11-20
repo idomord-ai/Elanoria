@@ -1,6 +1,8 @@
 .atlas-card {
   --card-tint: #d5b67c;
   --card-line: #35453a;
+  position: relative;
+  isolation: isolate;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 2.625rem minmax(0, 1fr) 1.125rem;
@@ -15,18 +17,46 @@
   background: linear-gradient(145deg, #152824, #10211e);
   color: #f0e6d1;
   text-decoration: none;
-  transition: border-color 160ms ease;
 }
 
-.atlas-card:hover,
-.atlas-card:focus-visible {
+.atlas-card::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  opacity: var(--card-glow, 0);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--card-tint) 17%, transparent), transparent 68%);
+  box-shadow: 0 0.5rem 1.15rem color-mix(in srgb, var(--card-tint) 15%, transparent);
+  pointer-events: none;
+  content: '';
+}
+
+.atlas-card:is(:focus-visible, :active) {
+  --card-glow: 1;
+  --card-arrow-opacity: 1;
   border-color: var(--card-tint);
-  background: linear-gradient(145deg, #1b312a, #142822);
 }
 
 .atlas-card:focus-visible {
+  --card-transform: translateY(-2px);
+  --card-arrow-transform: translateX(3px);
   outline: 2px solid var(--card-tint);
   outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .atlas-card:hover {
+    --card-glow: 1;
+    --card-arrow-opacity: 1;
+    --card-transform: translateY(-3px);
+    --card-arrow-transform: translateX(3px);
+    border-color: var(--card-tint);
+  }
+}
+
+.atlas-card:active {
+  --card-transform: scale(0.985);
+  --card-arrow-transform: none;
 }
 
 .atlas-card--actors { --card-tint: #cba7aa; }
@@ -224,8 +254,7 @@
   width: 0.875rem;
   height: 1px;
   background: var(--card-tint);
-  opacity: 0.7;
-  transition: transform 160ms ease, opacity 160ms ease;
+  opacity: var(--card-arrow-opacity, 0.7);
 }
 
 .atlas-card__arrow::after {
@@ -238,12 +267,6 @@
   border-top: 1px solid var(--card-tint);
   border-right: 1px solid var(--card-tint);
   transform: rotate(45deg);
-}
-
-.atlas-card:hover .atlas-card__arrow,
-.atlas-card:focus-visible .atlas-card__arrow {
-  opacity: 1;
-  transform: translateX(2px);
 }
 
 .atlas-card__summary {
@@ -293,9 +316,18 @@
   font-weight: 600;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .atlas-card,
+@media (prefers-reduced-motion: no-preference) {
+  .atlas-card {
+    transform: var(--card-transform, none);
+    transition: transform 170ms ease, border-color 170ms ease;
+  }
+
+  .atlas-card::before {
+    transition: opacity 170ms ease;
+  }
+
   .atlas-card__arrow {
-    transition: none;
+    transform: var(--card-arrow-transform, none);
+    transition: transform 170ms ease, opacity 170ms ease;
   }
 }

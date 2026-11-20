@@ -1,0 +1,77 @@
+.spell-library__header {
+  padding: clamp(1.1rem, 3vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: linear-gradient(120deg, #1d3028, #142320);
+}
+
+.spell-library__header h1 {
+  margin-bottom: 1.1rem;
+}
+
+.spell-library__filters {
+  display: grid;
+  grid-template-columns: minmax(0, 28rem) minmax(8rem, 12rem);
+  align-items: end;
+  gap: 0.75rem 1rem;
+}
+
+.spell-library__filters .editor-field {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.spell-library__filters select {
+  min-height: 3.3rem;
+}
+
+.spell-library__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.spell-library__list .atlas-card {
+  grid-template-rows: auto;
+  min-height: 5.25rem;
+}
+
+.spell-detail__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  gap: 0.8rem 1rem;
+  margin-block: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: #172925;
+}
+
+.spell-detail__stats dt,
+.spell-attribution {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.spell-detail__stats dd {
+  margin: 0.2rem 0 0;
+}
+
+.spell-attribution {
+  margin-block: 1.75rem 0;
+}
+
+.spell-attribution a {
+  color: var(--accent);
+  text-underline-offset: 0.15em;
+}
+
+@media (max-width: 36rem) {
+  .spell-library__filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

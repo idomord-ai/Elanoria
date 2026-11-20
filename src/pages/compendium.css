@@ -28,6 +28,17 @@
   object-position: center 49%;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .atlas-hero__art {
+    animation: atlas-art-drift 15s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes atlas-art-drift {
+  from { transform: translate(1.5%, 0.8%) scale(1.06); }
+  to { transform: translate(-3.5%, -1%) scale(1.13); }
+}
+
 .atlas-hero::after {
   z-index: -1;
   background: linear-gradient(90deg, #0b1e1cf7, #0b1e1cea 26%, #0b1e1c18 76%),
