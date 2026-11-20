@@ -74,3 +74,15 @@
 **06:51 · codex**
 
 > looks like it works now :). I think we are done for now, any furthur updates I will write here in the future for my own purposes. can you pleaes commit what's needed to be commit before I sent the final project on the website? also - how do I need or required to send it? I think I just need to upload or finish the repo, even though I might need to send it on the collage website.
+
+**06:56 · codex**
+
+> that's what is written in my assignment: מגישים קובץ אחד (PDF, DOCX או TXT) ובו: שם מלא, ת.ז., וקישור ל-repo הציבורי ב-GitHub.
+> 
+> לפני ההגשה פתחו את הקישור בחלון גלישה בסתר, וודאו שהקוד נראה בלי להיות מחוברים ל-GitHub. repo פרטי או קישור שלא נפתח לא ייבדק.
+> 
+> נבדק מצב ה-repo במועד ההגשה. commits שנוספו אחרי המועד לא ייבדקו.
+
+**07:01 · codex**
+
+> Looks like it works well - launched it on incognito mode and it seemed fine :). Can you help me create the txt file, or at least a prototype with the repo address, and I'll add in all the different things that required for me to add in it? like my id, full name and the public repo address :))).
